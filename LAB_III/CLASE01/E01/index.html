@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <!-- indica el chaeset, juego de caracteres que se utizaran en la pagina -->
+        <meta charset="UTF-8">
+        
+        <!-- tiene que ver con la resolucion del monitor -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- es la descripcion que figura debajo del titulo en el buscador de google -->
+        <meta type="description" content="Ésta página bla bla bla..."> 
+        
+        <!--  -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!-- los titles de las paginas son lo que se veran en los buscadores-->
+        <title>Ejemplo #01</title> 
+        
+        <style>
+            span{
+                color:blue;
+            }
+
+            div{
+                color:red;
+            }
+
+            #miID{
+                background:green;
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Aqui se escribe lo que se vera en la ventana -->
+
+        <h1 id="titulo1" class="titulo">Hola mundo!!</h1>
+
+        <p id="miID">párrafo1</p>
+        <p>párrafo2</p>
+        
+        <div>Esto es un div</div> <!-- elemento en bloque -->
+        <span>Esto es un span</span> <!-- elemento en linea -->
+
+        <div>
+            <p>Lorem ipsum dolor sit <span>amet consectetur adipisicing elit.</span> Incidunt omnis numquam placeat inventore vero, similique, accusamus possimus nisi ducimus eos voluptatum quos expedita. Iure ipsam natus doloribus ad iusto quam.</p>
+        </div>
+
+        <h1>Esto es un h1</h1>
+        <h2>Esto es un h2</h2>
+        <h3>Esto es un h3</h3>
+        <h4>Esto es un h4</h4>
+        <h5>Esto es un h5</h5>
+        <h6>Esto es un h6</h6>
+
+        <ul>
+            <li>Coca<li>
+        </ul>
+
+        <table border="1px">
+
+        <thead>
+
+        
+
+            <tr>
+                <th colspan="3">Materias<th>
+            </tr>
+
+        </head>
+
+        <tbody>
+
+            <tr>
+                <th>Programacion 1</th>
+                <th>Programacion 2</th>
+                <th>Programacion 3</th>
+            </tr>
+
+            <tr>
+                <td rowspan="2">*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+
+        </tbody>
+        </table>
+
+
+        <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="logo" title="logo html 5">
+
+        <pre>
+            <code> <!---  el pre muestra el texto literalmente como se encuentra escrito -->
+                function Saludar()
+                {
+                    console.log("hola mundo");
+                }
+            </code>
+        </pre>
+
+        <video src="./media/video.mp4" poster="../images/fotoNaturaleza.jpg" controls with="500px"> </video>
+
+
+
+    </body>
+
+</html>

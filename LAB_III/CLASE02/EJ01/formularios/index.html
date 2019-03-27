@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Formularios</title>
+    </head>
+
+
+    <body>
+        <h1>Formularios</h1>
+
+
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <p>
+                <label for="txtNombre">Nombre:</label><br>
+                <input type="text" name="nombre" id="txtNombre" class="" placeholder="Ingrese su nombre" required>
+            </p>
+
+            <p>
+                <label for="txtClave">Clave:</label><br>
+                <input type="password" name="password" id="txtClave" class="" disabled> <!-- disabled readonly required -->
+            </p>
+        </fieldset>
+
+        <form action="pagina1.php" method="get" id="frm">            
+
+
+            <p>
+                <label for="txtClave">Email:</label><br>
+                <input type="email" name="email" id="txtEmail" class="" > 
+            </p>
+
+            <p>
+                <label for="txtClave">Edad:</label><br>
+                <input type="number" name="number" id="cmbNumber" min="1" max="10"> 
+            </p>
+
+            <p>
+                <label for="txtClave">Foto:</label><br>
+                <input type="file" name="file" id="txtFoto" accept="image/jpeg, image/png"> 
+            </p>
+
+            <p>
+                <label for="txtClave">Fecha:</label><br>
+                <input type="date" name="file" id="txtFoto"> 
+            </p>
+
+            <select name="" id="">
+                <optgroup label= "languajes 1">
+                    <option value="0">C#</option>
+                    <option value="1">Visual Basic</option>
+                </optgroup>
+                <optgroup label= "languajes 2">      
+                    <option value="2">JavaScript</option>
+                    <option value="3">Java</option>
+                </optgroup>
+            </select><br>
+
+            <label for="cbxNada">Nada: </label>
+            <input type="checkbox" name="" id="cbxNada" disabled><br>
+            <label for="cbxBicileta">Bicicleta: </label>
+            <input type="checkbox" name="" id="cbxBicileta"><br>
+            <label for="cbxPatina">Patina: </label>
+            <input type="checkbox" name="" id="cbxPatina"><br>
+
+            <fieldset>
+                <legend>Genero</legend>
+
+                <label for="rMasculino"></label>
+                <input type="radio" name="sexo" id="rMasculino" value="M">
+
+                <label for="rMasculino"></label>
+                <input type="radio" name="sexo" id="rMasculino" value="F">
+            </fieldset>
+
+            <fieldset disabled="disabled"></fieldset>
+            <textarea name="comentarios" id="" cols="30" rows="10"></textarea>
+
+            <h2>Lab III UTN-FRA todos los derechos reservados &copy;</h2>
+
+            <p>E = m * c<sup>2</sup></p>
+
+            <p>H<sub>2</sub>O</p>
+
+            <p><mark>Esto esta Resaltado</mark></p>
+
+            <input type="reset"><br>
+            <input type="submit" value="Enviar">
+
+
+
+            <!--  
+                <input type="button" value="UnBoton">
+                <input type="submit" value="Envair Datos">
+                
+                <button>Enviar Formulario</button>
+            -->
+
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Restablecer"> <!--limpia todos los textbox del formulario-->
+            
+            <script>
+                var txtNombre=document.getElementById('txtNombre');
+                //var frm=document.getElementsByTagName('form')[0]; // como devuelve un array se puede acceder por indice
+                var frm=document.getElementById('frm'); // como devuelve un array se puede acceder por indice
+                
+/*
+                // metodo 1 le paso el nombr de la funcion
+                frm.addEventListener('submit',);
+
+                function manejarSubmit(e)
+                {
+                    e.preventDefault();
+                    alert("Manejé el submit");
+                }
+
+                // metodo 2 le paso una funcion anonima
+                frm.addEventListener('submit', function() { 
+                    e.preventDefault();
+                    alert("Manejé el submit");
+
+                });
+*/
+                // metodo 3 las arrow function (forma correcta)
+                frm.addEventListener('submit', (e, f)=> { 
+
+                    e.preventDefault();
+                    alert("Manejé el submit");
+                    
+                });
+            
+
+
+            </script>
+
+        </form>
+
+
+    </body>
+</html>
