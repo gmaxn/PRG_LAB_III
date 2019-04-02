@@ -15,11 +15,8 @@
             return json_encode($this);
         }
 
-        function leerAlumno()
-        {
-            
-        }
-        function guardar($path, $mode)
+
+        function guardarCSV($path, $mode)
         {
             $str  = $this->nombre . ";";
             $str .= $this->edad . ";";
@@ -27,9 +24,30 @@
             $str .= $this->legajo . PHP_EOL;
             
             $gestor = fopen($path, $mode);
-            //fwrite($gestor, $str);
+            fwrite($gestor, $str);
+            fclose($gestor);
+        }
+        function leerCSV($path, $mode)
+        {
+            $gestor = fopen($path, $mode);
+
+            
+            
+        }
+
+        function guardarJSON($path, $mode)
+        {            
+            $gestor = fopen($path, $mode);
             fwrite($gestor, $this->retornarJSON().PHP_EOL);
             fclose($gestor);
-        }        
+        }
+        function leerJSON($path, $mode)
+        {
+            
+        }
+
+
+        
+        
     }
 ?>

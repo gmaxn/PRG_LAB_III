@@ -20,7 +20,8 @@
         {
             echo "se cargaron los datos correctamente: ";
             $miAlumno = new Alumno($nombre, $edad, $dni, $legajo);
-            $miAlumno->guardar("Archivos\alumnos.txt" ,"a+");
+            $miAlumno->guardarJSON("Archivos\ListadoAlumnos.json" ,"a+");
+            $miAlumno->guardarCSV("Archivos\ListadoAlumnos.txt" ,"a+");
         }
     }
     
