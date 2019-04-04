@@ -11,8 +11,8 @@
         //decodificarJSON($content) $content = RAW post data.
         $datosAlumno = decodificarJSON(trim(file_get_contents("php://input")));
         
-        var_dump($datosAlumno);
         //Process the JSON
+
 
         // como identificar si estoy recibiendo 
         // un string de objetos o un objeto solo??
@@ -21,6 +21,9 @@
         if(isset($datosAlumno['legajo']))
         {
             //$alumno = getAlumnoByID($arrayAlumnos, $datosAlumno['legajo']);
+
+
+            
 
             foreach($arrayAlumnos as &$alumno)
             {
@@ -31,6 +34,7 @@
                     $alumno->dni = $datosAlumno['dni'];
                 }
             }
+
             listar($arrayAlumnos);
 
             if(file_exists("Archivos/ListadoAlumnos.csv"))
@@ -42,8 +46,6 @@
                 unlink("Archivos/ListadoAlumnos.json") or die("Couldn't delete file");
             }
              
-
-
             foreach($arrayAlumnos as $alumno)
             {
                 $miAlumno = new Alumno($alumno->nombre,$alumno->edad, $alumno->dni, $alumno->legajo);
@@ -56,9 +58,6 @@
 
     }
     
-
-
-
     if(!isset($_PUT['legajo']))
     {
         //var_dump($arrayAlumnos);

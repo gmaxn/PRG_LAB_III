@@ -6,7 +6,9 @@
     {
         //decodificarJSON($content) $content = RAW post data.
         $arrayAlumnos = decodificarJSON(trim(file_get_contents("php://input")));
-   
+        
+
+        
         //Process the JSON
         foreach($arrayAlumnos as $alumno)
         {

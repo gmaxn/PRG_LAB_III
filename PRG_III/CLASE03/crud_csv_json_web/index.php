@@ -1,5 +1,11 @@
 <?php
     $dato = $_SERVER['REQUEST_METHOD'];
+
+    foreach($GLOBALS as $key=>$value)
+    {
+        echo $key;
+        echo "<br><br>";
+    }
     
     // echo $dato;
     // decidir si el get tiene valor o no
@@ -40,4 +46,5 @@
             subirFoto("./Fotos/", $paramName, $paramName);
         }
     }
+
 ?>
