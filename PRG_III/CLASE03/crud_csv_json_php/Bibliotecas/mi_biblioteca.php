@@ -47,6 +47,7 @@
         }
         return true;
     }
+
     function POSTParamsAreSetted($args)
     {
         if(isset($_POST))
@@ -83,6 +84,109 @@
         $str .= "</table>";  
         
         echo $str;
+    }
+
+    function modificarAlumno($array, $json)
+    {
+        $alumno = Alumno::getAlumnoByID($array, $json['legajo']);
+
+        if($alumno != null)
+        {          
+            $alumno->nombre = $json['nombre'];
+            $alumno->edad = $json['edad'];
+            $alumno->dni = $json['dni'];
+        }
+    }
+
+    function generarArchivos($arrayAlumnos)
+    {
+        foreach($arrayAlumnos as $alumno)
+        {
+            $miAlumno = new Alumno($alumno->nombre, $alumno->edad, $alumno->dni, $alumno->legajo);
+
+            $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
+            $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
+        }
+    }
+
+    function eliminarArchivos($args)
+    {
+        if(is_array($args))
+        {
+            foreach($args as $path)
+            {
+                if(file_exists($path))
+                {
+                    unlink($path) or die("No se pudo eliminar: $path");
+                    return true;
+                }
+            }
+        }
+
+        if(is_string($args))
+        {
+            if(file_exists($path))
+            {
+                unlink($path) or die("No se pudo eliminar: $path");
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    function saveData($data)
+    {
+        if(isMultiArray($data))
+        {
+            foreach($data as $alumno)
+            {
+                $miAlumno = new Alumno($alumno['nombre'], $alumno['edad'], $alumno['dni'], $alumno['legajo']);
+                $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
+                $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
+            }
+            return true;
+        }
+        else
+        {
+            $miAlumno = new Alumno($data['nombre'], $data['edad'], $data['dni'], $data['legajo']);
+            $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
+            $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
+            return true;
+        }
+        return false;
+    }
+
+    function post_params_get_array($values)
+    {
+        $array = array();
+        
+        foreach($values as $keys)
+        {
+            if(!isset($_POST[$keys]))
+            {
+                return null;
+            }
+            
+            $array[$keys] = $_POST[$keys];
+        }
+        return $array;
+    }
+
+    function get_params_get_array($values)
+    {
+        $array = array();
+        
+        foreach($values as $keys)
+        {
+            if(!isset($_GET[$keys]))
+            {
+                return null;
+            }
+            
+            $array[$keys] = $_GET[$keys];
+        }
+        return $array;
     }
 
 ?>

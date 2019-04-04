@@ -5,15 +5,20 @@
     $rawContent = Alumno::leerCSV("Archivos/ListadoAlumnos.csv", "r");
     $arrayAlumnos = Alumno::decodificarCSV($rawContent);
 
-
-    if(GETParamsAreSetted(array("legajo")))
+    if(isset($arrayAlumnos))
     {
-        $alumno = Alumno::getAlumnoByID($arrayAlumnos, $_GET['legajo']);
-        $alumno->imprimirAlumno();
+        if(GETParamsAreSetted(array("legajo")))
+        {
+            $alumno = Alumno::getAlumnoByID($arrayAlumnos, $_GET['legajo']);
+            $alumno->imprimirAlumno();
+        }
+        else
+        {
+            mostrarAlumnos($arrayAlumnos);
+        }
     }
     else
     {
-        mostrarAlumnos($arrayAlumnos);
+        echo "Error: El archivo no existe, o todavía no se han cargado datos.";
     }
-
 ?>

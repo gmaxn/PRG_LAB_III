@@ -22,7 +22,7 @@
     // DELETE
     if($requestMethod == "DELETE")
     {
-        require_once("Funciones/borrar_alumnos.php");
+        require_once("Funciones/eliminar_alumnos.php");
     }
 
 ?>

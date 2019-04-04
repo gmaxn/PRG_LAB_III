@@ -13,9 +13,19 @@
             
             if(isset($datosAlumno['legajo']))
             {
-                modificarAlumno($arrayAlumnos, $datosAlumno);
-                eliminarArchivos(array("Archivos/ListadoAlumnos.csv", "Archivos/ListadoAlumnos.json"));
-                generarArchivos($arrayAlumnos);
+                $alumno = Alumno::getAlumnoByID($arrayAlumnos, $datosAlumno['legajo']);
+                $elimino = Alumno::remove($arrayAlumnos, $alumno);
+                
+                if($elimino)
+                {
+                    eliminarArchivos(array("Archivos/ListadoAlumnos.csv", "Archivos/ListadoAlumnos.json"));
+                    generarArchivos($arrayAlumnos);
+                    echo "Se elimino el alumno de manera exitosa";
+                }
+                else
+                {
+                    echo "No se encontro el alumno con legajo: " . $datosAlumno['legajo'];
+                }
             }
         }
         mostrarAlumnos($arrayAlumnos);
@@ -24,5 +34,4 @@
     {
         echo "Error: El archivo no existe, o todavía no se han cargado datos.";
     }
-
 ?>

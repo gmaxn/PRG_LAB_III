@@ -26,41 +26,45 @@
         }
 
 
-        static function decodificarCSV($data)
-        {
-            $arrayAlumnos = array();
-            
-            foreach($data as $row)
-            {
-                $datosAlumno = explode(",", $row);
-
-                if($datosAlumno[0] != "")
-                {
-                    $nombre = trim($datosAlumno[0]);
-                    $edad = trim($datosAlumno[1]);
-                    $dni = trim($datosAlumno[2]);
-                    $legajo = trim($datosAlumno[3]);
-
-                    $arrayAlumnos[] = new Alumno($nombre, $edad, $dni, $legajo);
-                }
-            }
-            return $arrayAlumnos;
-        }
-
-
-
-
-
         // LECTURA Y ESCRITURA DE ARCHIVOS
         static function leerCSV($path, $mode)
         {
-            $stream = fopen($path, $mode);
-            $data = fread($stream, filesize($path));
-            $dataArr = explode("\n", $data);
-
-            fclose($stream);
-            return $dataArr;
+            if(file_exists($path))
+            {
+                $stream = fopen($path, $mode);
+                $data = fread($stream, filesize($path));
+                $dataArr = explode("\n", $data);
+                fclose($stream);
+                return $dataArr;
+            }
+            return null;
         }
+        
+        static function decodificarCSV($data)
+        {
+            if($data != null)
+            {
+                $arrayAlumnos = array();
+            
+                foreach($data as $row)
+                {
+                    $datosAlumno = explode(",", $row);
+    
+                    if($datosAlumno[0] != "")
+                    {
+                        $nombre = trim($datosAlumno[0]);
+                        $edad = trim($datosAlumno[1]);
+                        $dni = trim($datosAlumno[2]);
+                        $legajo = trim($datosAlumno[3]);
+    
+                        $arrayAlumnos[] = new Alumno($nombre, $edad, $dni, $legajo);
+                    }
+                }
+                return $arrayAlumnos;
+            }
+            return null;
+        }
+
         function guardarCSV($path, $mode)
         {
             $data = $this->retornarCSV() . PHP_EOL;
@@ -69,8 +73,6 @@
             fwrite($stream, $data);
             fclose($stream);
         }
-
-
 
         function guardarJSON($path, $mode)
         {
@@ -90,10 +92,25 @@
             {
                 if($alumno->legajo == $legajo)
                 {
-                    return $alumno; // retornar un alumno en lugar de un string
+                    return $alumno;
                 }
             }
             return null;
+        }
+
+        static function remove(&$arrayAlumnos, $alumno)
+        {
+            $i = 0;
+            foreach($arrayAlumnos as &$auxAlumno)
+            {
+                if($auxAlumno == $alumno)
+                {
+                    unset($arrayAlumnos[$i]);
+                    return true;
+                }
+                $i++;
+            }
+            return false;
         }
 
         function alumnoToString()
