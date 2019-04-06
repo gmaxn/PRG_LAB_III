@@ -5,9 +5,9 @@
     {
         public $legajo;
 
-        public function __construct($nombre, $edad, $dni, $legajo) 
+        public function __construct($nombre, $apellido, $edad, $dni, $legajo) 
         {
-            parent::__construct($nombre, $edad, $dni);
+            parent::__construct($nombre, $apellido, $edad, $dni);
             $this->legajo = $legajo;        
         }
 
@@ -33,20 +33,20 @@
             {
                 $stream = fopen($path, $mode);
                 $data = fread($stream, filesize($path));
-                $dataArr = explode("\n", $data);
                 fclose($stream);
-                return $dataArr;
+                return $data;
             }
             return null;
         }
         
-        static function decodificarCSV($data)
+        static function decodificarCSV($rawFile)
         {
-            if($data != null)
+            if($rawFile != null)
             {
+                $array = explode("\n", $rawFile);
                 $arrayAlumnos = array();
             
-                foreach($data as $row)
+                foreach($array as $row)
                 {
                     $datosAlumno = explode(",", $row);
     
@@ -56,8 +56,9 @@
                         $edad = trim($datosAlumno[1]);
                         $dni = trim($datosAlumno[2]);
                         $legajo = trim($datosAlumno[3]);
+                        $apellido = trim($datosAlumno[4]);
     
-                        $arrayAlumnos[] = new Alumno($nombre, $edad, $dni, $legajo);
+                        $arrayAlumnos[] = new Alumno($nombre, $apellido, $edad, $dni, $legajo);
                     }
                 }
                 return $arrayAlumnos;
@@ -116,6 +117,7 @@
         function alumnoToString()
         {
             $str  = "<th>$this->nombre</th>";
+            $str .= "<th>$this->apellido</th>";
             $str .= "<th>$this->edad</th>";
             $str .= "<th>$this->dni</th>";
             $str .= "<th>$this->legajo</th>";
@@ -135,6 +137,7 @@
 
             $str .= "<tr>";
             $str .= "<th>$this->nombre</th>";
+            $str .= "<th>$this->apellido</th>";
             $str .= "<th>$this->edad</th>";
             $str .= "<th>$this->dni</th>";
             $str .= "<th>$this->legajo</th>";

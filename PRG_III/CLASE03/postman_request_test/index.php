@@ -1,32 +1,31 @@
 <?php
-    require_once("manejador_postman_request.php");
-    $dato = $_SERVER['REQUEST_METHOD'];
-
-    printSuperglobalData($_SERVER, "SERVER");
-
-    if($dato == "GET")
+    $requestMethod = $_SERVER['REQUEST_METHOD'];
+    
+    // READ
+    if($requestMethod == "GET")
     {
-        echo "entró en GET";
-        printSuperglobalData($_GET, $dato);
+        echo $requestMethod;
     }
 
-    if($dato == "POST")
+    // CREATE
+    if($requestMethod == "POST")
     {
-        echo "entró en POST";
-        printSuperglobalData($_POST, $dato);
+        echo $requestMethod;
     }
 
-    if($dato == "PUT")
+    // UPDATE
+    if($requestMethod == "PUT")
     {
-        echo "entró en PUT";
-
-        printPut($dato);
+        echo $requestMethod;
     }
 
-    if($dato == "DELETE")
+    // DELETE
+    if($requestMethod == "DELETE")
     {
-        echo "entró en DELETE";
-        printDelete($dato);
+        echo $requestMethod;
     }
+
+
+
 
 ?>

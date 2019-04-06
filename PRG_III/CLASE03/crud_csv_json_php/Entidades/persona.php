@@ -5,9 +5,9 @@
     {
         public $dni;
 
-        public function __construct($nombre, $edad, $dni) 
+        public function __construct($nombre, $apellido, $edad, $dni) 
         {
-            parent::__construct($nombre, $edad);
+            parent::__construct($nombre, $apellido, $edad);
             $this->dni = $dni;        
         }
 

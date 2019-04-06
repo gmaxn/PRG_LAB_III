@@ -69,6 +69,7 @@
         
         $str .= "<tr>";
         $str .= "<th>Nombre</th>";
+        $str .= "<th>Apellido</th>";
         $str .= "<th>Edad</th>";
         $str .= "<th>DNI</th>";
         $str .= "<th>Legajo</th>";
@@ -93,6 +94,7 @@
         if($alumno != null)
         {          
             $alumno->nombre = $json['nombre'];
+            $alumno->nombre = $json['apellido'];
             $alumno->edad = $json['edad'];
             $alumno->dni = $json['dni'];
         }
@@ -102,7 +104,7 @@
     {
         foreach($arrayAlumnos as $alumno)
         {
-            $miAlumno = new Alumno($alumno->nombre, $alumno->edad, $alumno->dni, $alumno->legajo);
+            $miAlumno = new Alumno($alumno->nombre, $alumno->apellido, $alumno->edad, $alumno->dni, $alumno->legajo);
 
             $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
             $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
@@ -118,9 +120,9 @@
                 if(file_exists($path))
                 {
                     unlink($path) or die("No se pudo eliminar: $path");
-                    return true;
                 }
             }
+            return true;
         }
 
         if(is_string($args))
@@ -128,20 +130,20 @@
             if(file_exists($path))
             {
                 unlink($path) or die("No se pudo eliminar: $path");
-                return true;
             }
+            return true;
         }
         
         return false;
     }
 
-    function saveData($data)
+    function saveData($args)
     {
-        if(isMultiArray($data))
+        if(isMultiArray($args))
         {
-            foreach($data as $alumno)
+            foreach($args as $alumno)
             {
-                $miAlumno = new Alumno($alumno['nombre'], $alumno['edad'], $alumno['dni'], $alumno['legajo']);
+                $miAlumno = new Alumno($alumno['nombre'], $alumno['apellido'], $alumno['edad'], $alumno['dni'], $alumno['legajo']);
                 $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
                 $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
             }
@@ -149,7 +151,7 @@
         }
         else
         {
-            $miAlumno = new Alumno($data['nombre'], $data['edad'], $data['dni'], $data['legajo']);
+            $miAlumno = new Alumno($args['nombre'], $args['apellido'], $args['edad'], $args['dni'], $args['legajo']);
             $miAlumno->guardarCSV("Archivos/ListadoAlumnos.csv" ,"a+");
             $miAlumno->guardarJSON("Archivos/ListadoAlumnos.json" ,"a+");
             return true;
