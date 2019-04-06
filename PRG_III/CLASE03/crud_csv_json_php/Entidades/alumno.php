@@ -19,6 +19,7 @@
         function retornarCSV()
         {
             $str  = $this->nombre . ",";
+            $str .= $this->apellido . ",";
             $str .= $this->edad . ",";
             $str .= $this->dni . ",";
             $str .= $this->legajo;
@@ -53,10 +54,10 @@
                     if($datosAlumno[0] != "")
                     {
                         $nombre = trim($datosAlumno[0]);
-                        $edad = trim($datosAlumno[1]);
-                        $dni = trim($datosAlumno[2]);
-                        $legajo = trim($datosAlumno[3]);
-                        $apellido = trim($datosAlumno[4]);
+                        $apellido = trim($datosAlumno[1]);
+                        $edad = trim($datosAlumno[2]);
+                        $dni = trim($datosAlumno[3]);
+                        $legajo = trim($datosAlumno[4]);
     
                         $arrayAlumnos[] = new Alumno($nombre, $apellido, $edad, $dni, $legajo);
                     }
@@ -116,31 +117,40 @@
 
         function alumnoToString()
         {
-            $str  = "<th>$this->nombre</th>";
-            $str .= "<th>$this->apellido</th>";
-            $str .= "<th>$this->edad</th>";
-            $str .= "<th>$this->dni</th>";
-            $str .= "<th>$this->legajo</th>";
+            $imgdir = "Fotos/".$this->legajo.$this->nombre.$this->apellido.".jpg";
+            $str  = "<td>$this->nombre</td>";
+            $str .= "<td>$this->apellido</td>";
+            $str .= "<td>$this->edad</td>";
+            $str .= "<td>$this->dni</td>";
+            $str .= "<td>$this->legajo</td>";
+            if(file_exists($imgdir))
+            {
+                $str .= "<td>"."<img src=\"$imgdir\" alt=\"foto_alumno\" height=50 width=50 border=3/>"."</td>";
+            }
 
             return $str;
         }
 
         function imprimirAlumno()
         {
+            $imgdir = "Fotos/". $this->legajo . $this->nombre . $this->apellido . ".jpg";
             $str  = "<table border='1px'>";
             $str .= "<tr>";
             $str .= "<th>Nombre</th>";
+            $str .= "<th>Apellido</th>";
             $str .= "<th>Edad</th>";
             $str .= "<th>DNI</th>";
             $str .= "<th>Legajo</th>";
+            $str .= "<th>Foto</th>";
             $str .= "</tr>";
 
             $str .= "<tr>";
-            $str .= "<th>$this->nombre</th>";
-            $str .= "<th>$this->apellido</th>";
-            $str .= "<th>$this->edad</th>";
-            $str .= "<th>$this->dni</th>";
-            $str .= "<th>$this->legajo</th>";
+            $str .= "<td>$this->nombre</td>";
+            $str .= "<td>$this->apellido</td>";
+            $str .= "<td>$this->edad</td>";
+            $str .= "<td>$this->dni</td>";
+            $str .= "<td>$this->legajo</td>";
+            $str .= "<td>"."<img src=\"$imgdir\" alt=\"foto_alumno\" height=50 width=50 border=3/>"."</td>";
             $str .= "</tr>";
             $str .= "</table>";    
             echo $str;

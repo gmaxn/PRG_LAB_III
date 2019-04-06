@@ -73,6 +73,7 @@
         $str .= "<th>Edad</th>";
         $str .= "<th>DNI</th>";
         $str .= "<th>Legajo</th>";
+        $str .= "<th>Foto</th>";
         $str .= "</tr>";
 
         foreach($arrayAlumnos as $alumno)
