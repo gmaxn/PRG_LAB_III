@@ -1,0 +1,9 @@
+SELECT * FROM `alumno` as a WHERE 1 --> crear alias
+SELECT * FROM `localidad` as a, 'localidad' as l  WHERE 1
+SELECT * FROM `alumno` as a, 'localidad' as l  WHERE a.idLocalidad=l.id
+
+SELECT a.nombre, l.nombre FORM 'alumno' as a, 'localidad' as l WHERE a.idLocalidad=l.id
+
+SELECT * FORM 'alumno as a, 'localidad' as l,  where 1
+
+SELECT a.nombre FROM 'alumno
