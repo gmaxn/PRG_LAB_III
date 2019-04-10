@@ -1,0 +1,23 @@
+p{
+    color: rgb(0, 0, 255);
+    font-family: 'Times New Roman', Times, monospace;
+    font-style: italic;
+    font-size: 2.5em; /* en vez de poner px se usa em ya que lo hace proporcional buscar medidas relativas em*/
+    /*font-size: 2.5pw;  en vez de poner px se usa pw ya que lo hace proporcional a la medida de la pantalla */
+    
+}
+
+#miDiv{
+    color: red;
+}
+
+.miClase{
+    background-color:orange;
+
+}
+
+#miDiv2{
+    background-color: rgba(0, 0, 0, .5); /*rgba maneja opacidad*/
+    height: 100px;
+    width: 100px;
+}

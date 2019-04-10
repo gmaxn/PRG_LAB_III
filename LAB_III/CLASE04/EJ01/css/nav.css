@@ -1,0 +1,63 @@
+*{ /* el selector * nos permite seleccionar todo el contenido*/
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+
+}
+
+ul li{ /* todos los hijos li de algun ul en el html*/
+
+    background: lightblue;
+    float: left;
+    width:33.33%;
+    padding: 10px;
+    border-right: 4px gray solid
+/*
+    a{
+
+    }
+*/
+}
+
+ul li:last-child{ /* cuando la pagina se arma de manera dinamica no sabemos cuantos elementos tendremos de esta manera generica podremos acceder a ellos y modificarlos*/
+    border-right: none
+}
+
+ul li:hover{ /* ---> pseudo clases */
+    background-color: blue;
+}
+
+ul li a{
+    text-decoration:none;
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+/* media Querys */
+
+@media only screen and (min-width: 500px)
+{
+    ul li{
+        float: none;
+        border-right: none;
+        border-bottom: 4px solid gray;
+        position:  relative;
+        left: -150px;
+        transition: left 3s;
+
+    }
+
+    ul li:last-child{ /* ---> pseudo clases */
+        border-bottom:none;
+    }
+
+    ul li:hover{ /* ---> pseudo clases */
+        left:0px;
+    }
+
+
+}

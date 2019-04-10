@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formularios</title>
+</head>
+
+<body>
+
+    <h1>Formularios</h1>
+
+    <form id="frm1" action="pagina1.php" method="get">
+
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <p><label>Nombre: <input type="text" id="txtNombre" name="nombre" placeholder="Ingrese su nombre" disabled>
+                </label></p>
+            <p><label>Clave: <input type="password" id="txtClave" name="password"> </label></p>
+
+        </fieldset>
+        <p><label>Email: <input type="email" id="txtEmail" name="email"> </label></p>
+        <p><label>Edad: <input type="number" id="txtEdad" name="edad" min="1" max="10" value="5"> </label></p>
+        <p><label>Foto: <input type="file" id="txtFoto" name="foto" accept="image/*, .jpg"> </label></p>
+        <p><label>Fecha: <input type="date" id="txtClave" name="password"> </label></p>
+        <input type="button" value="un boton"><br>
+
+        <select name="" id="">
+            <optgroup label="lenguajes 1">
+
+                <option value="0">C#</option>
+                <option value="1">Visual Basic</option>
+            </optgroup>
+            <optgroup label="lenguajes 2">
+                <option value="2">JavaScript</option>
+                <option value="3">Java</option>
+            </optgroup>
+        </select><br>
+
+        <label>Nada: <input type="checkbox" name="" id="" disabled></label><br>
+        <label>Bicicleta: <input type="checkbox" name="" id=""></label><br>
+        <label>Patina: <input type="checkbox" name="" id=""></label><br>
+
+        <fieldset>
+            <legend>Sexo</legend>
+            <label >Maculino <input type="radio" name="sexo" value="M"  ></label>
+            <label >Femenino <input type="radio" name="sexo" value="F"></label>
+        </fieldset>
+
+        <label for="comentarios">Comentarios</label><br>
+        <textarea name="comentarios" id="" cols="30" rows="10"></textarea>
+
+        <h2>Lab III UTN-FRA todos los derechos reservados &copy;</h2>
+
+        <p> E = m * c<sup>2</sup></p>
+
+        <p>H<sub>2</sub>O</p>
+
+        <p> <u>Esto esta subrayado</u></p>
+
+        <p><mark>Esto esta resaltado</mark></p>
+
+        <p><del>Esto esta tachado</del></p>
+
+        <input type="reset"><br>
+
+
+        <input type="submit" value="Enviar">
+
+
+        <script>
+
+            //var txtNombre = document.getElementById('txtNombre');
+
+            // https://www.w3schools.com/jsref/met_document_addeventlistener.asp
+
+            var frm = document.getElementById('frm1');
+
+            frm.addEventListener('submit', (e) => {
+
+                e.preventDefault();
+                alert("Maneje el submit");
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+    </form>
+
+    <script>
+
+
+
+    </script>
+
+</body>
+
+</html>
